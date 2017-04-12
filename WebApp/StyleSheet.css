@@ -1,0 +1,94 @@
+﻿body {
+    text-align: center;
+    
+}
+#jumbotronId {
+   margin: 0;
+}
+#loginBox {
+    margin: auto;
+    border: 2px solid black;
+    margin-top: 50px;
+    font-size: 1.5em;
+    padding: 50px 10px 50px 10px;
+   
+}
+#byBox {
+    margin-top: 50px;
+    font-size: 2em;
+}
+#registerBox h2 {
+    text-align: right;
+}
+#LoginBox h2 {
+    text-align: right;
+}
+.txtRegister {
+    margin-top: 20px;
+    font-size: 20px;
+}
+#btnSubmitRegister {
+    font-size: 30px;
+    margin-top: 10px;
+}
+#btnLogin, #btnNewUser {
+    margin-left: 20px;
+    font-size: 2em;
+}
+#btnRow {
+    display:flex;
+    justify-content: space-between;
+    margin: auto;
+}
+.btn {
+    display: flex;
+}
+.imgbtn {
+    border: 4px solid red;
+}
+.row {
+    margin:auto;
+}
+table {
+    border: 1px solid black;
+    
+}
+table td {
+    border: 1px solid black;
+    text-align: center;
+    padding: 5px;
+}
+table td span {
+    text-align:center;
+    
+}
+table th {
+    padding: 10px;
+    width: 10%;
+    background-color: lightgreen;
+    border: 1px solid black;
+    text-align: center;
+    
+}
+table td input {
+    margin: 10px 0 10px 0
+}
+#Search {
+    border: 1px solid black;
+    padding: 3px;
+    margin-bottom: 10px;
+    background-color: lightblue;
+    
+
+}
+#Search p {
+    font-size: 20px;
+}
+#Search input {
+    margin-top: 3px;
+}
+#Search select {
+    margin-top: 3px;
+    margin-right: 10px;
+    font-size: 17px;
+}
