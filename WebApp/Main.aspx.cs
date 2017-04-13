@@ -11,12 +11,17 @@ public partial class Main : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        string query = Request.QueryString["Token"];
+        if (query != LocalData.GetUserToken())
+        {
+            Response.Redirect("Default.aspx");
+        }
 
         patron = LocalData.GetCurrentPatron();
         if ( patron == null)
         {
             Response.Write("<script>alert('Not Logged In');</script>");
-            Response.Redirect("Default.aspx");
+            Response.Redirect("Default.aspx?Token=" + LocalData.GetUserToken());
         }
         if (patron.IsLibrarian())
         {
@@ -40,16 +45,16 @@ public partial class Main : System.Web.UI.Page
 
     protected void imgSettings_Click(object sender, ImageClickEventArgs e)
     {
-        Response.Redirect("AccountSettings.aspx");
+        Response.Redirect("AccountSettings.aspx?Token=" + LocalData.GetUserToken());
     }
 
     protected void imgCheckout_Click(object sender, ImageClickEventArgs e)
     {
-        Response.Redirect("Checkout.aspx");
+        Response.Redirect("Checkout.aspx?Token=" + LocalData.GetUserToken());
     }
 
     protected void imgAddRemove_Click(object sender, ImageClickEventArgs e)
     {
-        Response.Redirect("AddorRemove.aspx");
+        Response.Redirect("AddorRemove.aspx?Token=" + LocalData.GetUserToken());
     }
 }

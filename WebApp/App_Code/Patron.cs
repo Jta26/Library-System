@@ -78,8 +78,9 @@ public class Patron
     public static bool AddBook(Book book)
     {
         SqlConnection conn = new SqlConnection(LocalData.ConnectionString);
-        string query = "INSERT INTO Books (Title, Author, Publisher, ISBN, Edition, PublicationYear, CopyNumber, BookStatus) VALUES (@catalognumber, @title, @author, @publisher, @isbn, @edition, @publicationyear, @copynumber, @bookstatus)";
+        string query = "INSERT INTO Books (imgURl, Title, Author, Publisher, ISBN, Edition, PublicationYear, CopyNumber, BookStatus) VALUES (@imgurl, @title, @author, @publisher, @isbn, @edition, @publicationyear, @copynumber, @bookstatus)";
         SqlCommand cmd = new SqlCommand(query, conn);
+        cmd.Parameters.AddWithValue("@imgurl", book.ImageUrl);
         cmd.Parameters.AddWithValue("@title", book.Title);
         cmd.Parameters.AddWithValue("@author", book.Author);
         cmd.Parameters.AddWithValue("@publisher", book.Publisher);
@@ -92,6 +93,17 @@ public class Patron
         int intReturn;
         conn.Open();
         intReturn = cmd.ExecuteNonQuery();
+        conn.Close();
+        return true;
+    }
+    public static bool RemoveBook(Book book)
+    {
+        SqlConnection conn = new SqlConnection(LocalData.ConnectionString);
+        string query = "DELETE FROM Books WHERE CatalogNumber=@catalognumber";
+        SqlCommand cmd = new SqlCommand(query, conn);
+        cmd.Parameters.AddWithValue("@catalognumber", book.CatalogNumber);
+        conn.Open();
+        cmd.ExecuteNonQuery();
         conn.Close();
         return true;
     }
@@ -130,9 +142,33 @@ public class Patron
         
         return true;
     }
-    public static bool Return(Book book)
+    public static string Return(Book book)
     {
-        return true;
+        book.isCheckedOut = false;
+        SqlConnection conn = new SqlConnection(LocalData.ConnectionString);
+        string query = "Update Books SET BookStatus=@status WHERE CatalogNumber=@catalognumber";
+        SqlCommand cmd = new SqlCommand(query, conn);
+        cmd.Parameters.AddWithValue("@status", book.isCheckedOut);
+        cmd.Parameters.AddWithValue("@catalognumber", book.CatalogNumber);
+        string query2 = "SELECT Username, DueDate FROM Loans Where CatalogNumber=@catalognumber";
+        SqlCommand cmdDueDate = new SqlCommand(query2, conn);
+        cmd.Parameters.AddWithValue("@catalognumber", book.CatalogNumber);
+        SqlDataReader dr = cmdDueDate.ExecuteReader();
+        DateTime now = DateTime.Now;
+        while (dr.Read())
+        {
+            DateTime dueDate = Convert.ToDateTime(dr["DueDate"]);
+            if (dueDate > now)
+            {
+                return "Book Returned, Overdue Charge $1.00";
+            }
+            else
+            {
+                return "Book Returned Successfully";
+            }
+        }
+        return "Error: Not Returned";
+        
     }
     public void Logout()
     {

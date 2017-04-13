@@ -12,6 +12,7 @@ public class Login
 {
     string connection = LocalData.ConnectionString;
 
+
     public Login()
     {
         
@@ -76,12 +77,25 @@ public class Login
                 CreditPhone = drCreditPhone
             };
             LocalData.SetCurrentPatron(patron);
+            Guid guid = Guid.NewGuid();
+            LocalData.SetUserToken(guid.ToString());
             if (drUserType == 3)
             {
                 patron.Librarian = true;
             }
                 
 
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    public static bool VerifyToken(string strUserToken)
+    {
+        if (LocalData.GetUserToken() == strUserToken)
+        {
             return true;
         }
         else

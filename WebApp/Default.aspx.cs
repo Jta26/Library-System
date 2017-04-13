@@ -24,7 +24,7 @@ public partial class _Default : System.Web.UI.Page
       
         if (isVerfied)
         {
-            Response.Redirect("Main.aspx");
+            Response.Redirect("Main.aspx?Token=" + LocalData.GetUserToken());
         }
         else
         {

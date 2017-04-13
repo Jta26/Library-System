@@ -54,7 +54,7 @@
                 <ItemTemplate>
                     <tr>
                         <td>
-                            <img width="65" runat="server" src='<%# Eval("imgURl") %>' />
+                            <img width="65" id="imgImage" runat="server" src='<%# Eval("imgURl") %>' />
                         </td>
                             <td>
                                 <asp:Label ID="lblTitle" runat="server" Text='<%# Eval("Title") %>' />

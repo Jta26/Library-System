@@ -10,14 +10,18 @@ public partial class Checkout : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        
+        string query = Request.QueryString["Token"];
+        if (query != LocalData.GetUserToken())
+        {
+            Response.Redirect("Default.aspx");
+        }
 
     }
     protected void btnSearch_Click(object sender, EventArgs e)
     {
         if (string.IsNullOrWhiteSpace(txtSearch.Text))
         {
-            Response.Redirect("Checkout.aspx");
+            Response.Redirect("Checkout.aspx?Token=" + LocalData.GetUserToken());
         }
         else
         {
@@ -29,11 +33,12 @@ public partial class Checkout : System.Web.UI.Page
 
     protected void btnReset_Click(object sender, EventArgs e)
     {
-        Response.Redirect("Checkout.aspx");
+        Response.Redirect("Checkout.aspx?Token=" + LocalData.GetUserToken());
     }
 
     protected void bookRepeater_ItemCommand(object source, RepeaterCommandEventArgs e)
     {
+
         Control ctlTitle = e.Item.FindControl("lblTitle");
         Label lblTitle = (Label)ctlTitle;
 
@@ -72,8 +77,8 @@ public partial class Checkout : System.Web.UI.Page
         int PublicationYear = Convert.ToInt32(lblPublicationYear.Text);
         int Edition = Convert.ToInt32(lblEdition.Text);
         bool BookStatus = Convert.ToBoolean(lblBookStatus.Text);
-
-        Book book = new Book(Title,Author,Publisher,CatalogNumber,ISBN,PublicationYear, Edition, BookStatus);
+        string img = "";
+        Book book = new Book( Title,Author,Publisher,CatalogNumber,ISBN,PublicationYear, Edition, BookStatus, img);
 
         LocalData localdata = new LocalData();
         Patron patron = LocalData.GetCurrentPatron();

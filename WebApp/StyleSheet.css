@@ -1,6 +1,5 @@
 ﻿body {
     text-align: center;
-    
 }
 #jumbotronId {
    margin: 0;
@@ -96,8 +95,10 @@ table td input {
     margin-right: 10px;
     font-size: 17px;
 }
-#column1 .row {
-   
+
+#column1 {
+   position: fixed;
+   float:left;
 }
 #column1 p {
     font-size: 15px;
@@ -106,4 +107,25 @@ table td input {
 #column1 #btnSubmit {
     width: 20%;
     margin-top: 20px;
-}   
+}  
+#column2 {
+    float:right;
+}
+#searchbook {
+    background-color: lightblue;
+    padding: 5px;
+    padding-top: 10px;
+    border: 1px solid black;
+
+}
+#searchbook p {
+    font-size: 15px;
+    text-align: right;
+}
+#searchbook #by {
+    text-align: center;
+}
+#searchbook #drpSearch {
+    font-size: 15px;
+}
+
