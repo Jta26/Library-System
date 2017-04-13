@@ -53,21 +53,23 @@ table {
     border: 1px solid black;
     
 }
-table td {
-    border: 1px solid black;
-    text-align: center;
-    padding: 5px;
-}
+    table td {
+        border: 1px solid black;
+        text-align: center;
+        padding: 5px;
+        font-size: 18px;
+    }
 table td span {
     text-align:center;
     
 }
 table th {
-    padding: 10px;
+    font-size: 20px;
     width: 10%;
     background-color: lightgreen;
     border: 1px solid black;
     text-align: center;
+    
     
 }
 table td input {
@@ -92,3 +94,14 @@ table td input {
     margin-right: 10px;
     font-size: 17px;
 }
+#column1 .row {
+   
+}
+#column1 p {
+    font-size: 15px;
+    text-align: right;
+}
+#column1 #btnSubmit {
+    width: 20%;
+    margin-top: 20px;
+}   

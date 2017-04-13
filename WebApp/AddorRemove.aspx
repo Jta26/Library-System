@@ -16,7 +16,45 @@
     </div>
     <form id="form1" runat="server">
     <div class="container">
-        
+        <div class="row">
+            <div id="column1" class="col-lg-6">
+                <h3>Add Book</h3>
+                <div class="row">
+                    <p class="col-sm-4">Title</p>
+                    <asp:TextBox ID="txtTitle" runat="server" CssClass="col-sm-4"></asp:TextBox>
+                </div>
+                <div class="row">
+                    <p class="col-sm-4">Author</p>
+                    <asp:TextBox ID="txtAuthor" runat="server" CssClass="col-sm-4"></asp:TextBox>
+                </div>
+                <div class="row">
+                    <p class="col-sm-4">Publisher</p>
+                    <asp:TextBox ID="txtPublisher" runat="server" CssClass="col-sm-4"></asp:TextBox>
+                </div>
+                <div class="row">
+                    <p class="col-sm-4">ISBN</p>
+                    <asp:TextBox ID="txtISBN" runat="server" CssClass="col-sm-4"></asp:TextBox>
+                </div>
+                <div class="row">
+                    <p class="col-sm-4">Edition</p>
+                    <asp:TextBox ID="txtEdition" runat="server" CssClass="col-sm-4"></asp:TextBox>
+                </div>
+                <div class="row">
+                    <p class="col-sm-4">Publication Year</p>
+                    <asp:TextBox ID="txtPubYear" runat="server" CssClass="col-sm-4"></asp:TextBox>
+                </div>
+                <div class="row">
+                    <p class="col-sm-4">Image Url</p>
+                    <asp:TextBox ID="txtURL" runat="server" CssClass="col-sm-4"></asp:TextBox>
+                </div>
+                <div class="row">
+                    <asp:Button ID="btnSubmit" runat="server" Text="Submit" />
+                </div>
+            </div>
+            <div id="column2" class="col-lg-6">
+                <h2>Remove Book</h2>
+            </div>
+        </div>
     </div>
     </form>
 </body>

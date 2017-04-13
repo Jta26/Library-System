@@ -38,6 +38,7 @@
                 <HeaderTemplate>
                     <table class="col-md-12">  
                         <tr>
+                            <th>Image</th>
                             <th>Title</th>
                             <th>Author</th>
                             <th>Publisher</th>
@@ -52,6 +53,9 @@
                 </HeaderTemplate>
                 <ItemTemplate>
                     <tr>
+                        <td>
+                            <img width="65" runat="server" src='<%# Eval("imgURl") %>' />
+                        </td>
                             <td>
                                 <asp:Label ID="lblTitle" runat="server" Text='<%# Eval("Title") %>' />
                             </td>
