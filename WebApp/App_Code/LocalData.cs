@@ -8,15 +8,15 @@ using System.Web;
 /// </summary>
 public class LocalData
 {
-    public static string ConnectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename='C:\\Users\\Joel\\Box Sync\\School\\Uni\\Semester 4\\Systems Analysis and Design\\Project\\WebApp\\App_Data\\SysAnalysisDb.mdf';Integrated Security=True";
+    public static string ConnectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename='C:\\Users\\Joel-PC\\Library-System\\WebApp\\App_Data\\SysAnalysisDb.mdf';Integrated Security=True";
     private static Patron currentPatron;
     private List<Book> bookList = new List<Book>();
  
-    public Patron GetCurrentPatron()
+    public static Patron GetCurrentPatron()
     {
         return currentPatron;
     }
-    public void SetCurrentPatron(Patron patron)
+    public static void SetCurrentPatron(Patron patron)
     {
         currentPatron = patron;
     }

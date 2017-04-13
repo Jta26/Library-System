@@ -8,12 +8,11 @@ using System.Web.UI.WebControls;
 public partial class Main : System.Web.UI.Page
 {
     Patron patron;
-    LocalData localdata = new LocalData();
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        
-        patron = localdata.GetCurrentPatron();
+
+        patron = LocalData.GetCurrentPatron();
         if ( patron == null)
         {
             Response.Write("<script>alert('Not Logged In');</script>");

@@ -10,11 +10,11 @@ using System.Data.SqlClient;
 //Checks if the entered username and password are equal to a ID in the database, if so, Logs the user in under that data.
 public class Login
 {
-    string connection;
+    string connection = LocalData.ConnectionString;
 
     public Login()
     {
-        connection = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename='C:\\Users\\Joel\\Box Sync\\School\\Uni\\Semester 4\\Systems Analysis and Design\\Project\\WebApp\\App_Data\\SysAnalysisDb.mdf';Integrated Security=True";
+        
     }
 
     public bool LoginUser(string strUsername, string strPassword)
@@ -75,8 +75,7 @@ public class Login
                 ProgramOffice = drProgramOffice,
                 CreditPhone = drCreditPhone
             };
-            LocalData localdata = new LocalData();
-            localdata.SetCurrentPatron(patron);
+            LocalData.SetCurrentPatron(patron);
             if (drUserType == 3)
             {
                 patron.Librarian = true;

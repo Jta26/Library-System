@@ -76,7 +76,7 @@ public partial class Checkout : System.Web.UI.Page
         Book book = new Book(Title,Author,Publisher,CatalogNumber,ISBN,PublicationYear, Edition, BookStatus);
 
         LocalData localdata = new LocalData();
-        Patron patron = localdata.GetCurrentPatron();
+        Patron patron = LocalData.GetCurrentPatron();
         if (BookStatus == false)
         {
             lblBookStatus.Text = patron.Checkout(book).ToString();

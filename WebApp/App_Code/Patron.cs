@@ -105,9 +105,9 @@ public class Patron
         SqlCommand cmd = new SqlCommand(query, conn);
         cmd.Parameters.AddWithValue("@Status", book.isCheckedOut);
         cmd.Parameters.AddWithValue("@catalognumber", book.CatalogNumber);
-        string query2 = "INSERT INTO Loans (Username, CatalogNumber, DueDate, DateCheckedOut) VALUES (@userid, @catalognumber, @duedate, @datecheckedout)";
+        string query2 = "INSERT INTO Loans (Username, CatalogNumber, DueDate, DateCheckedOut) VALUES (@username, @catalognumber, @duedate, @datecheckedout)";
         SqlCommand cmd2 = new SqlCommand(query2, conn);
-        cmd2.Parameters.AddWithValue("@userid", Username);
+        cmd2.Parameters.AddWithValue("@username", Username);
         cmd2.Parameters.AddWithValue("@catalognumber", book.CatalogNumber);
         cmd2.Parameters.AddWithValue("@duedate", dueDate);
         cmd2.Parameters.AddWithValue("@datecheckedout", currentTime);
@@ -115,7 +115,15 @@ public class Patron
 
         conn.Open();
         cmd.ExecuteNonQuery();
-        cmd2.ExecuteNonQuery();
+        try
+        {
+            cmd2.ExecuteNonQuery();
+        }
+        catch
+        {
+
+        }
+        
         conn.Close();
 
 
@@ -128,6 +136,7 @@ public class Patron
     }
     public void Logout()
     {
+        LocalData.SetCurrentPatron(null);
         FirstName = null;
         LastName = null;
         Username = null;

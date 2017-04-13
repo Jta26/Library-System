@@ -6,8 +6,8 @@
 <head runat="server">
     <title></title>
         <link href="StyleSheet.css" rel="stylesheet" />
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
     <div id="jumbotronId" class="">
@@ -33,7 +33,7 @@
             <asp:Button ID="btnReset" runat="server" Text="Reset" OnClick="btnReset_Click" CssClass="col-lg-1"/>
             
         </div>
-        <div id="AddBook">
+        <div id="Checkout">
             <asp:Repeater ID="bookRepeater" runat="server" DataSourceID="SqlDataSource1" OnItemCommand="bookRepeater_ItemCommand" OnItemDataBound="bookRepeater_ItemDataBound">
                 <HeaderTemplate>
                     <table class="col-md-12">  
