@@ -61,4 +61,9 @@ public partial class AddorRemove : System.Web.UI.Page
         Patron.RemoveBook(book);
         Response.Redirect("AddorRemove.aspx?Token=" + LocalData.GetUserToken());
     }
+
+    protected void btnAddLibrarian_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("AddLibrarian.aspx?Token=" + LocalData.GetUserToken());
+    }
 }

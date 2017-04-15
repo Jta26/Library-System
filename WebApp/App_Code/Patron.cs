@@ -170,6 +170,19 @@ public class Patron
         return "Error: Not Returned";
         
     }
+    public static bool ElevateLibrarian(string strUsername)
+    {
+        int librarian = 3;
+        SqlConnection conn = new SqlConnection(LocalData.ConnectionString);
+        string query = "UPDATE UserType SET UserType=@type WHERE Id = (SELECT Id FROM USERS WHERE UPPER(Username)=@username)";
+        SqlCommand cmd = new SqlCommand(query, conn);
+        cmd.Parameters.AddWithValue("@type", librarian);
+        cmd.Parameters.AddWithValue("@username", strUsername.ToUpper());
+        conn.Open();
+        cmd.ExecuteNonQuery();
+        conn.Close();
+        return true;
+    }
     public void Logout()
     {
         LocalData.SetCurrentPatron(null);

@@ -27,7 +27,7 @@ public partial class Main : System.Web.UI.Page
         {
             imgAddRemove.ImageUrl = "https://cdn1.iconfinder.com/data/icons/education-solid-icons-vol-4/48/156-512.png";
             pnlbtn.Visible = true;
-            lblAddRemove.Text = "Add/Remove Books";
+            lblAddRemove.Text = "Administrative";
         } 
 
 

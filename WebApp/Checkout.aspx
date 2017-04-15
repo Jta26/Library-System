@@ -16,6 +16,7 @@
     </div>
     <form id="form1" runat="server">
     <div class="container">
+        <h2>Checkout a Book</h2>
         <div id="Search" class="row">
                 <p class="col-lg-1">Search</p>
                 <asp:TextBox ID="txtSearch" runat="server" CssClass="col-lg-2"></asp:TextBox>
