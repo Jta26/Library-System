@@ -8,7 +8,7 @@ using System.Web;
 /// </summary>
 public class LocalData
 {
-    public static string ConnectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename='C:\\Users\\Joel\\Library-System\\WebApp\\App_Data\\SysAnalysisDb.mdf';Integrated Security=True";
+    public static string ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
 
     private static Patron currentPatron;
     private List<Book> bookList = new List<Book>();

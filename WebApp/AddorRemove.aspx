@@ -18,6 +18,7 @@
     <div class="container">
         <div class="row">
             <div id="column1" class="col-lg-6">
+                <div id="bookWrapper">
                 <h2>Add Book</h2>
                 <div id="addBook">
                 
@@ -60,9 +61,10 @@
 
                 </div>
                     <div class="row">
-                    <asp:Button ID="btnAddLibrarian" runat="server" Text="Add Librarian User" />
+                    <asp:Button ID="btnAddLibrarian" runat="server" Text="Add Librarian User" OnClick="btnAddLibrarian_Click" />
                 </div>
                 </div>
+                    </div>
             </div>
             <div id="column2" class="col-lg-6">
                 <h2>Remove Book</h2>

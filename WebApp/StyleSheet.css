@@ -3,6 +3,7 @@
 }
 #jumbotronId {
    margin: 0;
+   border-bottom: 1px solid black;
 }
 #loginBox {
     margin: auto;
@@ -97,10 +98,12 @@ table td input {
 }
 
 #column1 {
-   position: fixed;
    float:left;
    width: 38%;
    
+}
+#bookWrapper {
+
 }
 #column1 p {
     font-size: 15px;
@@ -126,7 +129,7 @@ table td input {
     background-color: lightblue;
 }
 #column2 {
-    float:right;
+   float:left;
 }
 #searchbook {
     background-color: lightblue;
@@ -144,5 +147,21 @@ table td input {
 }
 #searchbook #drpSearch {
     font-size: 15px;
+}
+#AddLibarian .row {
+    margin-top: 30px;
+    background-color: lightblue;
+    padding: 10px;
+    width: 60%;
+    margin: auto;
+    margin-bottom: 10px;
+    border: 1px solid black;
+
+}
+#AddLibarian .row  p{
+    text-align: right;
+    font-size: 20px;
+
+
 }
 
