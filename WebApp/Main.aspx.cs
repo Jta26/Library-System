@@ -12,7 +12,7 @@ public partial class Main : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         string query = Request.QueryString["Token"];
-        if (query != LocalData.GetUserToken())
+        if (query != LocalData.GetUserToken() || LocalData.GetUserToken() == null)
         {
             Response.Redirect("Default.aspx");
         }
