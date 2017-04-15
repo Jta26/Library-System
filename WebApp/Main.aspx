@@ -33,7 +33,7 @@
                 <p>Checkout Books</p>
             </div>
             <div class="col-md-2 btn">
-                <asp:ImageButton ImageUrl="http://www.fancyicons.com/free-icons/232/science/png/256/return_book_256.png" ID="imgReturn" runat="server" CssClass="btn-default imgbtn" AlternateText="Logout" Width="100" Height="100" BorderStyle="Solid" BorderColor="Black"/>
+                <asp:ImageButton ImageUrl="http://www.fancyicons.com/free-icons/232/science/png/256/return_book_256.png" ID="imgReturn" runat="server" CssClass="btn-default imgbtn" AlternateText="Logout" Width="100" Height="100" BorderStyle="Solid" BorderColor="Black" OnClick="imgReturn_Click"/>
                 <p>Return Books</p>
             </div>
             <asp:Panel ID="pnlbtn" runat="server" Visible="false">

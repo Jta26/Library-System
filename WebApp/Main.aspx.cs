@@ -21,7 +21,7 @@ public partial class Main : System.Web.UI.Page
         if ( patron == null)
         {
             Response.Write("<script>alert('Not Logged In');</script>");
-            Response.Redirect("Default.aspx?Token=" + LocalData.GetUserToken());
+            Response.Redirect("Default.aspx");
         }
         if (patron.IsLibrarian())
         {
@@ -56,5 +56,10 @@ public partial class Main : System.Web.UI.Page
     protected void imgAddRemove_Click(object sender, ImageClickEventArgs e)
     {
         Response.Redirect("AddorRemove.aspx?Token=" + LocalData.GetUserToken());
+    }
+
+    protected void imgReturn_Click(object sender, ImageClickEventArgs e)
+    {
+        Response.Redirect("Return.aspx?Token=" + LocalData.GetUserToken());
     }
 }

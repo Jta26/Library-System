@@ -19,6 +19,8 @@
         <div class="row">
             <div id="column1" class="col-lg-6">
                 <h2>Add Book</h2>
+                <div id="addBook">
+                
                 <div class="row">
                     <p class="col-sm-4">Title</p>
                     <asp:TextBox ID="txtTitle" runat="server" CssClass="col-sm-4"></asp:TextBox>
@@ -49,6 +51,17 @@
                 </div>
                 <div class="row">
                     <asp:Button ID="btnSubmit" runat="server" Text="Submit" OnClick="btnSubmit_Click" />
+                </div>
+                    </div>
+                <div class="row" id="AdminButtons">
+                    <h2>Administrative</h2>
+                    <div class="row">
+                    <asp:Button ID="btnViewCheckouts" runat="server" Text="View Checked Out Books" />
+
+                </div>
+                    <div class="row">
+                    <asp:Button ID="btnAddLibrarian" runat="server" Text="Add Librarian User" />
+                </div>
                 </div>
             </div>
             <div id="column2" class="col-lg-6">

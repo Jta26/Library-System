@@ -99,6 +99,8 @@ table td input {
 #column1 {
    position: fixed;
    float:left;
+   width: 38%;
+   
 }
 #column1 p {
     font-size: 15px;
@@ -106,8 +108,23 @@ table td input {
 }
 #column1 #btnSubmit {
     width: 20%;
-    margin-top: 20px;
-}  
+    margin-top: 10px;
+} 
+#AdminButtons {
+    
+    width: 50%;
+    margin: auto;
+}
+#AdminButtons #btnAddLibrarian { 
+    margin-top: 10px;
+}
+#addBook {
+    margin: auto;
+    position: relative;
+    border: 1px solid black;
+    padding: 10px;
+    background-color: lightblue;
+}
 #column2 {
     float:right;
 }
