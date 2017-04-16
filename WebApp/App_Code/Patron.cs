@@ -146,13 +146,17 @@ public class Patron
     {
         book.isCheckedOut = false;
         SqlConnection conn = new SqlConnection(LocalData.ConnectionString);
-        string query = "Update Books SET BookStatus=@status WHERE CatalogNumber=@catalognumber";
+        string query = "Update Books SET BookStatus=@status WHERE CatalogNumber=@catalognumber; DELETE FROM Loans Where CatalogNumber=@catalognumber2 AND Username=@username";
         SqlCommand cmd = new SqlCommand(query, conn);
         cmd.Parameters.AddWithValue("@status", book.isCheckedOut);
         cmd.Parameters.AddWithValue("@catalognumber", book.CatalogNumber);
-        string query2 = "SELECT Username, DueDate FROM Loans Where CatalogNumber=@catalognumber";
-        SqlCommand cmdDueDate = new SqlCommand(query2, conn);
-        cmd.Parameters.AddWithValue("@catalognumber", book.CatalogNumber);
+        cmd.Parameters.AddWithValue("@catalognumber2", book.CatalogNumber);
+        cmd.Parameters.AddWithValue("@username", LocalData.GetCurrentPatron().Username);
+        string query2 = "SELECT Username, DueDate FROM Loans Where CatalogNumber=@catalognumber3;";
+        SqlConnection connDueDate = new SqlConnection(LocalData.ConnectionString);
+        SqlCommand cmdDueDate = new SqlCommand(query2, connDueDate);
+        cmdDueDate.Parameters.AddWithValue("@catalognumber3", book.CatalogNumber);
+        connDueDate.Open();
         SqlDataReader dr = cmdDueDate.ExecuteReader();
         DateTime now = DateTime.Now;
         while (dr.Read())
@@ -160,13 +164,23 @@ public class Patron
             DateTime dueDate = Convert.ToDateTime(dr["DueDate"]);
             if (dueDate > now)
             {
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                conn.Close();
+                connDueDate.Close();
                 return "Book Returned, Overdue Charge $1.00";
+                
             }
             else
             {
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                conn.Close();
+                connDueDate.Close();
                 return "Book Returned Successfully";
             }
         }
+        connDueDate.Close();
         return "Error: Not Returned";
         
     }

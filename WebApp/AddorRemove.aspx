@@ -57,7 +57,7 @@
                 <div class="row" id="AdminButtons">
                     <h2>Administrative</h2>
                     <div class="row">
-                    <asp:Button ID="btnViewCheckouts" runat="server" Text="View Checked Out Books" />
+                    <asp:Button ID="btnViewCheckouts" runat="server" Text="View Checked Out Books" OnClick="btnViewCheckouts_Click" />
 
                 </div>
                     <div class="row">

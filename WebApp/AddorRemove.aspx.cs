@@ -66,4 +66,9 @@ public partial class AddorRemove : System.Web.UI.Page
     {
         Response.Redirect("AddLibrarian.aspx?Token=" + LocalData.GetUserToken());
     }
+
+    protected void btnViewCheckouts_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("ViewCheckouts.aspx?Token=" + LocalData.GetUserToken());
+    }
 }
