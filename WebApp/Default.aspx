@@ -41,13 +41,7 @@
         </div>
         
         <div id="byBox">
-        <asp:Label ID="Label3" runat="server" Text="Joel Austin"></asp:Label>
-        <br />
-        <asp:Label ID="Label4" runat="server" Text="Greg Mckibbin"></asp:Label>
-        <br />
-        <asp:Label ID="Label5" runat="server" Text="Zach McClure"></asp:Label>
-        <br />
-        <asp:Label ID="Label6" runat="server" Text="Aarron Dixon"></asp:Label>
+        <asp:Label ID="Label3" runat="server" Text="Created by Joel Austin"></asp:Label>
             </div>
     </form>
 </body>

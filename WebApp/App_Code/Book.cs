@@ -17,6 +17,7 @@ public class Book
     public int CopyNumber;
     public bool isCheckedOut;
     public string ImageUrl;
+    public bool wasReserved;
 
 
     public Book(string strTitle, string strAuthor, string strPublisher, int intCatalogNumber, string strISBN, int intPublicationYear, int Edition, bool boolIsCheckedOut, string strImageUrl)
@@ -29,7 +30,6 @@ public class Book
         PublicationYear = intPublicationYear;
         ImageUrl = strImageUrl;
     }
-
     
         
 

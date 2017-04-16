@@ -137,15 +137,6 @@
             </div>
         </div>
     </form>
-            <div id="byBox">
-        <asp:Label ID="Label3" runat="server" Text="Joel Austin"></asp:Label>
-        <br />
-        <asp:Label ID="Label4" runat="server" Text="Greg Mckibbin"></asp:Label>
-        <br />
-        <asp:Label ID="Label5" runat="server" Text="Zach McClure"></asp:Label>
-        <br />
-        <asp:Label ID="Label6" runat="server" Text="Aarron Dixon"></asp:Label>
-            </div>
 </body>
     <script type="text/javascript" src="onchange.js"></script>
 </html>

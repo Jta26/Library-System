@@ -66,6 +66,9 @@ public partial class Checkout : System.Web.UI.Page
         Control ctlBookStatus = e.Item.FindControl("lblBookStatus");
         Label lblBookStatus = (Label)ctlBookStatus;
 
+        Control ctlReserved = e.Item.FindControl("lblReserved");
+        Label lblReserved = (Label)ctlReserved;
+
         Control ctlCheckout = e.Item.FindControl("btnCheckout");
         Button btnCheckout = (Button)ctlCheckout;
 
@@ -82,17 +85,36 @@ public partial class Checkout : System.Web.UI.Page
 
         LocalData localdata = new LocalData();
         Patron patron = LocalData.GetCurrentPatron();
-        if (BookStatus == false)
+        if (BookStatus == false && lblReserved.Text == "")
         {
             lblBookStatus.Text = patron.Checkout(book).ToString();
             btnCheckout.Text = "Reserve";
+            Response.Redirect("Checkout.aspx?Token=" + LocalData.GetUserToken());
             Response.Write("<script>alert(" + lblTitle.Text + " Checked out Successfully')</script>");
 
         }
+        else if (BookStatus == false && lblReserved.Text == LocalData.GetCurrentPatron().Username)
+        {
+            book.wasReserved = true;
+
+            lblBookStatus.Text = patron.Checkout(book).ToString();
+            btnCheckout.Text = "Reserve";
+            Response.Redirect("Checkout.aspx?Token=" + LocalData.GetUserToken());
+            Response.Write("<script>alert(" + lblTitle.Text + " Checked out Successfully')</script>");
+        }
+        else if (BookStatus == false && lblReserved.Text != LocalData.GetCurrentPatron().Username)
+        {
+            Response.Write("<script>alert('This Book is Already Reserved. Try Again Later.')</script>");
+            btnCheckout.Enabled = false;
+        }
+        else if (BookStatus == true && lblReserved.Text == "")
+        {
+            Patron.ReserveBook(book);
+            Response.Redirect("Checkout.aspx?Token=" + LocalData.GetUserToken());
+        }
         else
         {
-            Response.Write("<script>alert('Already Checked Out')</script>");
-            //patron.Reserve(book);
+            btnCheckout.Enabled = false;
         }
         
         
@@ -107,11 +129,28 @@ public partial class Checkout : System.Web.UI.Page
             Control ctlBookStatus = Item.FindControl("lblBookStatus");
             Label lblBookStatus = (Label)ctlBookStatus;
 
-            if (lblBookStatus.Text == "True")
+            Control ctlReserved = Item.FindControl("lblReserved");
+            Label lblReserved = (Label)ctlReserved;
+
+            Control ctlCheckout = Item.FindControl("btnCheckout");
+            Button btnCheckout = (Button)ctlCheckout;
+
+            if (lblBookStatus.Text == "True" && lblReserved.Text == "")
             {
-                Control ctlCheckout = Item.FindControl("btnCheckout");
-                Button btnCheckout = (Button)ctlCheckout;
+                
                 btnCheckout.Text = "Reserve";
+            }
+            if (lblBookStatus.Text == "False" && lblReserved.Text != "")
+            {
+                if (LocalData.GetCurrentPatron().Username.ToUpper() == lblReserved.Text.ToUpper())
+                {
+                    btnCheckout.Text = "Checkout";
+                }
+                else
+                {
+                    btnCheckout.Text = "Reserve";
+                }
+                
             }
         }
     }

@@ -109,6 +109,7 @@ public class Patron
     }
     public bool Checkout(Book book)
     {
+        
         book.isCheckedOut = true;
         DateTime currentTime = DateTime.Now;
         DateTime dueDate = DateTime.Now.AddDays(14);
@@ -123,18 +124,22 @@ public class Patron
         cmd2.Parameters.AddWithValue("@catalognumber", book.CatalogNumber);
         cmd2.Parameters.AddWithValue("@duedate", dueDate);
         cmd2.Parameters.AddWithValue("@datecheckedout", currentTime);
+        string query3 = "UPDATE Books SET Reserved=@reserved WHERE CatalogNumber=@catalognumber";
+        SqlCommand cmd3 = new SqlCommand(query3, conn);
+        cmd3.Parameters.AddWithValue("@reserved", "");
+        cmd3.Parameters.AddWithValue("@catalognumber", book.CatalogNumber);
+        
 
 
         conn.Open();
         cmd.ExecuteNonQuery();
-        try
-        {
+            if (book.wasReserved)
+            {
+                cmd3.ExecuteNonQuery();
+            }
             cmd2.ExecuteNonQuery();
-        }
-        catch
-        {
 
-        }
+
         
         conn.Close();
 
@@ -183,6 +188,18 @@ public class Patron
         connDueDate.Close();
         return "Error: Not Returned";
         
+    }
+    public static string ReserveBook(Book book)
+    {
+        SqlConnection conn = new SqlConnection(LocalData.ConnectionString);
+        string query = "UPDATE Books SET Reserved=@reserved WHERE CatalogNumber=@catalognumber";
+        SqlCommand cmd = new SqlCommand(query, conn);
+        cmd.Parameters.AddWithValue("@reserved", LocalData.GetCurrentPatron().Username);
+        cmd.Parameters.AddWithValue("@catalognumber", book.CatalogNumber);
+        conn.Open();
+        cmd.ExecuteNonQuery();
+        conn.Close();
+        return "Book Reserved";
     }
     public static bool ElevateLibrarian(string strUsername)
     {

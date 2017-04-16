@@ -48,7 +48,7 @@
                             <th>Publication Year</th>
                             <th>Catalog Number</th>
                             <th>Copy Number</th>
-                           
+                            <th>Reserved</th>
                             <th>Checked Out</th>
                         </tr>
                 </HeaderTemplate>
@@ -81,7 +81,9 @@
                             <td>
                                 <asp:Label ID="lblCopyNumber" runat="server" Text='<%# Eval("CopyNumber") %>' />
                             </td>
-                      
+                                              <td>
+                                <asp:Label ID="lblReserved" runat="server" Text='<%# Eval("Reserved") %>' />
+                            </td>
                             <td>
                                 <asp:Label ID="lblBookStatus" runat="server" Text='<%# Eval("BookStatus") %>' />
                             </td>
